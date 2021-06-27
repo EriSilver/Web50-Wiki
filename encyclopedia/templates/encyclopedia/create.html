@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+{% endblock %}
+
+{% block body %}
+    {% if msg or title %}
+        <div>
+            {% if msg %} {{msg}} <br>{% endif %}
+            {% if title %}Go To <a href="/{{title}}">{{title}}</a>{% endif %}
+        </div>
+    {% endif %}
+    
+    <h1>Create New Page</h1>
+
+    <form action="{% url 'create' %}" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Save</button>
+    </form>
+
+{% endblock %}
